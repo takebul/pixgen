@@ -10,10 +10,12 @@ import {
   Input,
   InputGroup,
   Label,
+  Separator,
   TextField,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 
 const SignInPage = () => {
@@ -31,8 +33,23 @@ const SignInPage = () => {
       password,
       fetchOptions: {
         onSuccess: () => {
-          toast.success("Sing up successful");
+          toast.success("Sing in successful");
           route.push("/");
+        },
+        onError: (error) => {
+          toast.error(error.message);
+        },
+      },
+    });
+  };
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      fetchOptions: {
+        onSuccess: () => {
+          route.push("/");
+          toast.success("Sing in successful");
         },
         onError: (error) => {
           toast.error(error.message);
@@ -120,6 +137,13 @@ const SignInPage = () => {
           </Button>
         </div>
       </Form>
+      <Separator className="my-4" />
+      <Button
+        onClick={handleGoogleSignIn}
+        className={"flex justify-center w-full"}
+      >
+        <FcGoogle /> Sing in with google
+      </Button>
     </Card>
   );
 };
