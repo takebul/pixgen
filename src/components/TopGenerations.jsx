@@ -3,7 +3,7 @@ import PhotoCard from "./PhotoCard";
 const TopGenerations = async () => {
   const res = await fetch("https://pixgen-gold.vercel.app/data.json");
   const data = await res.json();
-  const photos = data.items;
+  const photos = data?.items;
   const topPhotos = photos.slice(0, 8);
 
   return (

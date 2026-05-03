@@ -61,7 +61,6 @@ const SignInPage = () => {
   return (
     <Card className="border mx-auto w-125 py-10 mt-5">
       <h1 className="text-center text-2xl font-bold">Sign In</h1>
-
       <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
         <TextField
           isRequired
@@ -137,7 +136,9 @@ const SignInPage = () => {
           </Button>
         </div>
       </Form>
-      <Separator className="my-4" />
+      <Separator />
+      <p className="text-center">Or</p>
+      <Separator />
       <Button
         onClick={handleGoogleSignIn}
         className={"flex justify-center w-full"}
