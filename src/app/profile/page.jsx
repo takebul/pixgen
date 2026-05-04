@@ -1,12 +1,12 @@
 "use client";
 import { UpdateProfileModal } from "@/components/UpdateProfileModal";
 import { authClient } from "@/lib/auth-client";
-import { Avatar, Button, Card } from "@heroui/react";
+import { Avatar } from "@heroui/react";
 
 const ProfilePage = () => {
   const session = authClient.useSession();
   const user = session.data?.user;
-  console.log(user);
+
   return (
     <div className="w-2xl mx-auto border shadow my-10 py-8 px-6 space-y-4">
       <div className="flex justify-between items-center">
